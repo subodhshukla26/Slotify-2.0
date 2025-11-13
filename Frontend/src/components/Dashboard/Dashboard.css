@@ -1,0 +1,220 @@
+/* ScheduleEase.css */
+
+.dashboard-ease {
+  min-height: 100vh;
+  background-color: #111827;
+  color: white;
+}
+
+/* Main Content */
+.main-content {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Page Header */
+.page-header {
+  margin-bottom: 3rem;
+}
+
+.page-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.page-description {
+  color: #9ca3af;
+  font-size: 1.125rem;
+}
+
+/* Section Headers */
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* No Meetings Card */
+.no-meetings-card {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid #374151;
+
+}
+.custom-card {
+  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDOgCK7pAhpm0_8LocBGSUZIRylTnsEo8MAt2Y7nofHmoVOOnh7s-EjANhHKHlA4vDSeDNpHmjBDfj5s1SDdVMVefgJ2u8F1gZiutsry7R1KdPuXOUe-D4rM11hIazhIoIykMFgwXGXyAquktNswwn6_KvAZWtzV9tKLtGvLjwjyyG3uHEhv1PT8Wv9g_uwBj2YLJ1_2zKwM83gmNYzUlN1ijCnoxR74dZHZ_Yx0u6-5eAdlxawsbA0mu8n-2zAwDUGJsGhPSOBaNk");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  aspect-ratio: 16 / 9;   /* same as aspect-video */
+  border-radius: 0.5rem;  /* same as rounded-lg */
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  margin-bottom: 8px;
+}
+
+.no-meetings-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.no-meetings-description {
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+
+.view-meetings-btn {
+  background-color: #374151;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-bottom: 10px;
+}
+
+.view-meetings-btn:hover {
+  background-color: #4b5563;
+}
+
+/* Availability Card */
+.availability-card {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid #374151;
+}
+
+.availability-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.availability-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.availability-icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: #374151;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #60a5fa;
+}
+
+.availability-details h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.availability-details p {
+  color: #9ca3af;
+  margin: 0;
+}
+
+.edit-btn {
+  background-color: #374151;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.edit-btn:hover {
+  background-color: #4b5563;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.primary-btn {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primary-btn:hover {
+  background-color: #2563eb;
+}
+
+.secondary-btn {
+  background-color: #374151;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.secondary-btn:hover {
+  background-color: #4b5563;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-menu {
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    display: none;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .page-title {
+    font-size: 1.875rem;
+  }
+  
+  .calendar-illustration {
+    width: 12rem;
+    height: 8rem;
+  }
+  
+  .availability-content {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .quick-actions {
+    flex-direction: column;
+  }
+}

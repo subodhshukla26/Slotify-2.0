@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    background-color: #2a3441;
+    min-height: 100vh;
+    
+    /* padding: 80px 60px; */
+} 
+.container{
+  margin-top: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+ .title{
+  /* margin-top: 50px; */
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-bottom: 50px; 
+ color: white;
+  text-align: left;
+} 
+.meeting-options{
+  display: flex;
+  flex-direction: column;
+  gap: 5
+  0px; 
+}
+.meeting-card {
+   display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: transparent;
+  padding: 0;
+  border: none;
+  width: 100%; 
+  margin-bottom: 50px;
+}
+.meeting-info{
+  flex: 1;
+  text-align: left;
+  padding-right: 40px;
+  margin-bottom: 30px;
+}
+.meeting-name{
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+.meeting-description{
+  font-size: 1rem;
+  color: #9ca3af;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.select-button{
+  background-color: #4b4d50;
+  color: white;
+  border-radius: 4px;
+  padding: 8px 20px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 450;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.custom-bg {
+  width: 100%;
+  aspect-ratio: 16 / 9;         
+  background-position: center;  
+  background-repeat: no-repeat; 
+  background-size: cover;       
+  border-radius: 0.5rem;       
+  flex: 1;
+  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBKQh3kA8dh44RsjGxd-nYAjn7mDz6sdPntgnFanewy03PadnBoVRWnhK0tNvz96wfFvbzBHa3Uxe8-k07GJv3KsxwVQIPCMjytfPzkGmkEDXnplFnwKo28cMtqPAsIdU89QyUNjtu-B7zUcvYs640b-0CoHjMbvOAYP0pROfrSrVlU-tVaITk7M_Prq5gEGjTe4rR-acPQQRk6S4cPFr6ATWua92XYf85cet6c9cDG3Q-_3ruICwwyRv_5GPOHE_UrYFvMS5c5FfE");
+}
+.custom-card-one {
+  width: 100%;
+  aspect-ratio: 16 / 9;        
+  background-position: center;  
+  background-repeat: no-repeat; 
+  background-size: cover;       
+  border-radius: 0.5rem;        
+  flex: 1;                     
+  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnxLTqxHW_y7rqlWKvuAtxBdhuC-XkBZI2GkP_B-w45t9NTwMCa4XLR-TkxdTSL64jhFlHlX1oGw0wdjzksLfAjY9hBzjhgI0eGKYHvDTtWgjov82r5kOss_SOUGuAdT2NsBzzT3XDqNIXtqFYt96AW0M4Whb9_aYlpJ12VUqDQq6XFGTBy41Xc7NLWP7LHDZtz1tUjTVIFjaQuYeDmlHbiELydf3agUi0mCLTcnaJgnyWGe0_GMe38T9way32bRNRvFcgjijZIc8");
+}
+.custom-card-two {
+  width: 100%;
+  aspect-ratio: 16 / 9;         /* keeps same proportions as aspect-video */
+  background-position: center;  
+  background-repeat: no-repeat; 
+  background-size: cover;       
+  border-radius: 0.5rem;        
+  flex: 1;                    
+  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfA17upsSLui8lSSztUUfjoohlAk5kG1knQB-HmVbzuGms5nL5NBEZlSktlBVGaWNJnUvzAP6TSdnyq_8cPxolQLC0BB_2_topfc8nMV4-5nbKPYXaQRSX4-caBQZzm4GX_INPJCZmh_Y003K0qMiG8RosGi_hR7PUniRw5Gj8xleNiezsIuthLorpWluMuKub_EWj1YquZnfVh_Ke4pfc8fhWqiLtg9n0_GMbzZWDH6FovgDVih28sW27ABy8oNoI7tLSATuZfVQ");
+}
