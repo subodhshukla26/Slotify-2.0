@@ -4,7 +4,7 @@ import Appointment from '../components/Appointment/Appointment'
 
 const AppointmentPage = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: '#111827', minHeight: '100vh' }}>
       <Navbar/>
       <Appointment/>
     </div>

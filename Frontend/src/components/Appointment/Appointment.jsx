@@ -1,31 +1,69 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { createEvent } from '../../services/api';
 import './Appointment.css'
 
 const Appointment = () => {
-
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     appointmentName: '',
     description: '',
-    location: '',
-    eventLink: '',
     Color: '#3b82f6',
-    calendar: '',
-    duration: '',
-    dateRange: '',
-    price: '' 
+    duration: '30'
   });
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
         ...prev,
         [name]: value
     }));
+    setError(''); // Clear error on input change
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setLoading(true);
+    setError('');
+
+    // Validate required fields
+    if (!formData.appointmentName || !formData.duration) {
+      setError('Please fill in all required fields');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const eventData = {
+        title: formData.appointmentName,
+        description: formData.description,
+        duration: parseInt(formData.duration),
+        color: formData.Color
+      };
+
+      const response = await createEvent(eventData);
+      
+      if (response.success) {
+        alert('Event created successfully! ✅');
+        // Reset form
+        setFormData({
+          appointmentName: '',
+          description: '',
+          Color: '#3b82f6',
+          duration: '30'
+        });
+        // Navigate to dashboard
+        navigate('/dashboard');
+      }
+    } catch (err) {
+      console.error('Error creating event:', err);
+      setError(err.message || 'Failed to create event. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   }
 
 
@@ -36,6 +74,20 @@ const Appointment = () => {
            <h1 className="form-container-title">New Appointment</h1>
            <p className="form-container-paragraph">What kind of event is this?</p>
              </div>
+            
+            {error && (
+              <div style={{
+                padding: '12px',
+                backgroundColor: '#fee2e2',
+                border: '1px solid #ef4444',
+                borderRadius: '8px',
+                color: '#991b1b',
+                marginBottom: '1rem'
+              }}>
+                {error}
+              </div>
+            )}
+            
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                 <label htmlFor="appointmentName" className="form-label">
@@ -65,36 +117,6 @@ const Appointment = () => {
              className='form-textarea'
              />
             </div>
-            
-               <div className="form-group">
-            <label htmlFor="location" className="form-label">
-              Location
-            </label>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              value={formData.location}
-              onChange={handleInputChange}
-              placeholder="e.g., In person, Phone call, Video conference"
-              className="form-input"
-            />
-          </div>
-
-            <div className="form-group">
-            <label htmlFor="eventLink" className="form-label">
-              Event link
-            </label>
-            <input
-              type="text"
-              id="eventLink"
-              name="eventLink"
-              value={formData.eventLink}
-              onChange={handleInputChange}
-              placeholder="e.g., consultation-30min"
-              className="form-input"
-            />
-          </div>
 
           <div className="form-group">
             <label htmlFor="Color" className="form-label">
@@ -116,27 +138,9 @@ const Appointment = () => {
             </div>
           </div>
 
-          <h2 className="section-header">Availability</h2>
+          <h2 className="section-header">Event Details</h2>
 
           <div className="form-group">
-            <label htmlFor="calendar" className="form-label">
-              Calendar
-            </label>
-            <select
-              id="calendar"
-              name="calendar"
-              value={formData.calendar}
-              onChange={handleInputChange}
-              className="form-select"
-            >
-              <option value="">Select calendar</option>
-              <option value="primary">Primary Calendar</option>
-              <option value="work">Work Calendar</option>
-              <option value="personal">Personal Calendar</option>
-            </select>
-          </div>
-
-            <div className="form-group">
             <label htmlFor="duration" className="form-label">
               Duration
             </label>
@@ -157,49 +161,21 @@ const Appointment = () => {
             </select>
           </div>
 
-             <div className="form-group">
-            <label htmlFor="dateRange" className="form-label">
-              Date range
-            </label>
-            <select
-              id="dateRange"
-              name="dateRange"
-              value={formData.dateRange}
-              onChange={handleInputChange}
-              className="form-select"
-            >
-              <option value="">Select date range</option>
-              <option value="7days">Next 7 days</option>
-              <option value="14days">Next 14 days</option>
-              <option value="30days">Next 30 days</option>
-              <option value="60days">Next 60 days</option>
-              <option value="indefinite">Indefinite</option>
-            </select>
-          </div>
-
-            <h2 className="section-header">Pricing</h2>
-
-
-              <div className="form-group">
-            <label htmlFor="price" className="form-label">
-              Price
-            </label>
-            <select
-              id="price"
-              name="price"
-              value={formData.price}
-              onChange={handleInputChange}
-              className="form-select"
-            >
-              <option value="">Select pricing</option>
-              <option value="free">Free</option>
-              <option value="paid">Paid</option>
-            </select>
+          <div style={{
+            padding: '1rem',
+            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+            border: '1px solid rgba(139, 92, 246, 0.3)',
+            borderRadius: '8px',
+            marginTop: '1rem'
+          }}>
+            <p style={{ margin: 0, color: '#a78bfa', fontSize: '0.875rem' }}>
+              💡 <strong>Tip:</strong> Your availability is set in the Dashboard. This event will respect those working hours.
+            </p>
           </div>
 
           <div className="form-actions">
-            <button type="submit" className="create-btn">
-              Create event type
+            <button type="submit" className="create-btn" disabled={loading}>
+              {loading ? 'Creating...' : 'Create event type'}
             </button>
           </div>
             </form>

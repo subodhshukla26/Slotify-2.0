@@ -4,7 +4,7 @@ import Notification from '../components/Notification/Notification'
 
 const NotificationPage = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: '#111827', minHeight: '100vh' }}>
       <Navbar/>
       <Notification/>
     </div>

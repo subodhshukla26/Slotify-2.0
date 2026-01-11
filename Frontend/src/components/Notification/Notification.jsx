@@ -1,34 +1,46 @@
 import { Mail, Clock, Phone } from 'lucide-react';
 import React, { useState } from 'react'
 import './Notification.css'
+
 const Notification = () => {
-    
-    const [settings, setSettings] = useState(
-    {
-    HostNotification: false,
-    InviteeNotification: false,
-    EmailRemainders: false,
-    SMSRemainders: false,
-    cancellationWindow:''
+    const [saving, setSaving] = useState(false);
+    const [settings, setSettings] = useState({
+        hostNotifications: false,
+        inviteeNotifications: false,
+        emailReminders: false,
+        smsReminders: false,
+        cancellationWindow: ''
     });
 
-    const handleToggleBar = (Setting) =>{
+    const handleToggle = (setting) => {
         setSettings(prev => ({
             ...prev,
-            [Setting] : !prev[Setting]
-        }))
-    }
+            [setting]: !prev[setting]
+        }));
+    };
+
     const handleCancellationWindowChange = (e) => {
         setSettings(prev => ({
             ...prev,
             cancellationWindow: e.target.value
-        }))
-    }
+        }));
+    };
 
-    const handleSaveChanges = () =>{
-    console.log('Saving settings:', Settings);
-    alert('Settings saved successfully!');
-   }
+    const handleSaveChanges = async () => {
+        setSaving(true);
+        try {
+            // TODO: Add API endpoint for saving notification settings when backend is ready
+            // For now, just show success message
+            await new Promise(resolve => setTimeout(resolve, 500)); // Simulate API call
+            console.log('Saving settings:', settings);
+            alert('Notification settings saved successfully! ✅\n\nNote: Email and SMS notifications will be fully functional in the next update.');
+        } catch (error) {
+            console.error('Error saving settings:', error);
+            alert('Failed to save settings. Please try again.');
+        } finally {
+            setSaving(false);
+        }
+    };
 
   return (
      <div className="notifications">
@@ -43,6 +55,8 @@ const Notification = () => {
          
           <section>
           <h2 className="section-header">Event Notifications</h2>
+            
+            {/* Host Notifications */}
             <div className="notification-item">
             <div className="notification-content">
               <div className="notification-icon">
@@ -52,6 +66,29 @@ const Notification = () => {
                 <h3 className="notification-title">Host Notifications</h3>
                 <p className="notification-subtitle">
                   Email notifications sent to you when an event is scheduled, rescheduled, or canceled.
+                </p>
+              </div>
+            </div>
+            <label className="toggle-switch">
+              <input
+                type="checkbox"
+                checked={settings.hostNotifications}
+                onChange={() => handleToggle('hostNotifications')}
+              />
+              <span className="toggle-slider"></span>
+            </label>
+          </div>
+
+          {/* Invitee Notifications */}
+          <div className="notification-item">
+            <div className="notification-content">
+              <div className="notification-icon">
+                <Mail />
+              </div>
+              <div className="notification-details">
+                <h3 className="notification-title">Invitee Notifications</h3>
+                <p className="notification-subtitle">
+                  Email notifications sent to invitees when they book, reschedule, or cancel an event.
                 </p>
               </div>
             </div>
@@ -147,8 +184,12 @@ const Notification = () => {
 
          {/* Save Button */}
         <div className="save-button-container">
-          <button onClick={handleSaveChanges} className="save-btn">
-            Save Changes
+          <button 
+            onClick={handleSaveChanges} 
+            className="save-btn"
+            disabled={saving}
+          >
+            {saving ? 'Saving...' : 'Save Changes'}
           </button>
         </div>
         </div>

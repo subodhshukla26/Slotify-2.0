@@ -27,7 +27,12 @@ const userSchema = new mongoose.Schema(
     { 
     type: String, 
     default: "UTC" 
-    } // Optional, useful for bookings
+    }, // Optional, useful for bookings
+    googleTokens: {
+      accessToken: { type: String },
+      refreshToken: { type: String },
+      expiryDate: { type: Date }
+    }
   },
   {
     timestamps: true, // adds createdAt & updatedAt

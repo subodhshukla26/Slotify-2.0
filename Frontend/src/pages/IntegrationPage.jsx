@@ -4,7 +4,7 @@ import Integrations from '../components/Integrations/Integrations'
 
 const IntegrationPage = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: '#111827', minHeight: '100vh' }}>
       <Navbar/>
       <Integrations/>
     </div>

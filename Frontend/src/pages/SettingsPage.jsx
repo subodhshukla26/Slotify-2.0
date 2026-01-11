@@ -4,9 +4,8 @@ import Settings from '../components/Settings/Settings'
 
 const SettingsPage = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: '#111827', minHeight: '100vh' }}>
       <Navbar/>
-      <div style={{ marginTop: "20px" }}></div>
       <Settings/>
     </div>
   )
