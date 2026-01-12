@@ -5,3 +5,4 @@ _MACOSX/
 *.log
 dist/
 build/
+coverage/
